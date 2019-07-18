@@ -6,7 +6,6 @@
 	const ownProfileHandle = ownProfileHandleLink ? ownProfileHandleLink.textContent : null;
 
 	const contactsDiv = document.querySelector('#sidebar-contacts-list');
-	const resultsText = document.querySelector('.c-account-sidebar-contacts__results-title');
 	const userNicks = JSON.parse(searchBox.value);
 	const searchSubmit = document.querySelector('.js-submit-contacts-search');
 	const clearSearchBox = () => {
