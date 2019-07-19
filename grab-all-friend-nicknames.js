@@ -3,9 +3,9 @@
 		/* scroll contacts to the end */
 		const contactListElement = document.querySelector('.js-contacts-list');
 		const contactListQuery = jQuery(contactListElement);
-		contactListQuery.stop().animate({
+		await contactListQuery.stop().animate({
 			scrollTop: contactListQuery[0].scrollHeight
-		}, 2500);
+		}, 2500).promise();
 		const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 		//* wait 2.5 secs for things to settle */
 		await sleep(2500)
