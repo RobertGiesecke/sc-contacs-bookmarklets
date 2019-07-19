@@ -61,30 +61,38 @@
 				var nickLink = getNickOfFollowLink(a);
 				return nickLink && nickLink.textContent == user;
 			});
-
-			if (followLinksWithNick.length == 1) {
-				const followLink = followLinksWithNick[0];
-				const linkStyle = window.getComputedStyle(followLink);
-				if (linkStyle.display == 'none') {
-					console.log('already following ' + user);
-				} else {
-					followLinksWithNick[0].click();
-					console.log('clicked follow ' + user);
-				}
-			} else {
-				/* if you already follow the user, the result will be displayed twice, */
-				/* both with hidden follow link */
-				if (followLinksWithNick.length == 2) {
-					if (followLinksWithNick.filter(t => window.getComputedStyle(t).display == 'none').length) {
+			var shouldClearSearchbox = true;
+			try {
+				if (followLinksWithNick.length == 1) {
+					const followLink = followLinksWithNick[0];
+					const linkStyle = window.getComputedStyle(followLink);
+					if (linkStyle.display == 'none') {
 						console.log('already following ' + user);
-						continue;
+					} else {
+						followLinksWithNick[0].click();
+						console.log('clicked follow ' + user);
 					}
+				} else {
+					/* if you already follow the user, the result will be displayed twice, */
+					/* both with hidden follow link */
+					if (followLinksWithNick.length == 2) {
+						if (followLinksWithNick.filter(t => window.getComputedStyle(t).display == 'none').length) {
+							console.log('already following ' + user);
+							continue;
+						}
+					}
+					shouldClearSearchbox = false;
+					console.log('couldn\'t find ' + user);
 				}
-				console.log('couldn\'t find ' + user);
+			}
+			finally {
+				if (shouldClearSearchbox) {
+					clearSearchBox();
+				}
 			}
 		};
 	} finally {
-		if(window.scContactsBookmarklets && typeof window.scContactsBookmarklets.executeAfter === 'function') {
+		if (window.scContactsBookmarklets && typeof window.scContactsBookmarklets.executeAfter === 'function') {
 			window.scContactsBookmarklets.executeAfter();
 		}
 	}
