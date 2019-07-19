@@ -21,9 +21,9 @@
 		/* scroll contacts to the end to get existing friends */
 		const contactListElement = document.querySelector('.js-contacts-list');
 		const contactListQuery = jQuery(contactListElement);
-		contactListQuery.stop().animate({
+		await contactListQuery.stop().animate({
 			scrollTop: contactListQuery[0].scrollHeight
-		}, 2500);
+		}, 2500).promise();
 		/* wait for things to settle */
 		await sleep(2500);
 
