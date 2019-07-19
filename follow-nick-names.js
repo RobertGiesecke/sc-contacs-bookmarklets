@@ -27,7 +27,13 @@
 		/* wait for things to settle */
 		await sleep(2500);
 
-		const alreadyFollowingNickNames = Array.from(document.querySelectorAll('.js-nickname')).map(t => t.textContent);
+		const alreadyFollowingNickNames = Array.from(document.querySelectorAll('.js-nickname'))
+			.filter(t => {
+				/* only return nicks without visible follow link */
+				const followLink = t.parentElement.querySelector('.js-follow');
+				return followLink && window.getComputedStyle(followLink).display == 'none';
+			})
+			.map(t => t.textContent);
 
 		for (user of userNicks) {
 			if (user == ownProfileHandle) {
