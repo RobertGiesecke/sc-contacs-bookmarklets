@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bookmarklets to manage star citizen friend lists</title>
+    <style>
+        .anchor-link {
+            color: inherit;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,7 +21,8 @@
         <li>
             <a
                 href="javascript:(function()%7Bvar%20q%20%3D%20document.createElement('script')%3B%0Aif%20(!window.scContactsBookmarklets)%20%7B%0A%20%20%20%20window.scContactsBookmarklets%20%3D%20%7B%7D%3B%0A%7D%0Awindow.scContactsBookmarklets.executeAfter%20%3D%20()%20%3D%3E%20%7B%20q.remove()%3B%20%7D%3B%0Aq.src%20%3D%20'https%3A%2F%2Frobertgiesecke.github.io%2Fsc-contacts-bookmarklets%2Fgrab-org-nick-names.js'%3B%0Adocument.body.appendChild(q)%3B%7D)()%3Bvoid%200%3B">grab-org-nick-names</a>
-            Grabs all nick names of an organization to be used by <a href="#follow-nick-names">follow-nick-names</a>
+            Grabs all nick names of an organization to be used by <a class="anchor-link"
+                href="#follow-nick-names">follow-nick-names</a>
             <ul>
                 <li>You have to open the members tab of the organization</li>
                 <li>You do not have to be logged in for this script</li>
@@ -29,7 +35,8 @@
         <li>
             <a
                 href="javascript:(function()%7Bvar%20q%20%3D%20document.createElement('script')%3B%0Aif%20(!window.scContactsBookmarklets)%20%7B%0A%20%20%20%20window.scContactsBookmarklets%20%3D%20%7B%7D%3B%0A%7D%0Awindow.scContactsBookmarklets.executeAfter%20%3D%20()%20%3D%3E%20%7B%20q.remove()%3B%20%7D%3B%0Aq.src%20%3D%20'https%3A%2F%2Frobertgiesecke.github.io%2Fsc-contacts-bookmarklets%2Fgrab-all-friend-nicknames.js'%3B%0Adocument.body.appendChild(q)%3B%7D)()%3Bvoid%200%3B">grab-all-friend-nick-names</a>
-            Grabs all nick names of your friend list to be used by <a href="#follow-nick-names">follow-nick-names</a>
+            Grabs all nick names of your friend list to be used by <a class="anchor-link"
+                href="#follow-nick-names">follow-nick-names</a>
             <ul>
                 <li>You should open your account seeting side panel first (might work without, but let's not stress it)
                 </li>
@@ -59,7 +66,7 @@
     <script>
         window.addEventListener('load', () => {
             const bookmarkletLinks = document.querySelectorAll('a[href^="javascript:"]');
-            for(link of bookmarkletLinks) {
+            for (link of bookmarkletLinks) {
                 link.name = link.textContent;
             }
             const gifImages = document.querySelectorAll('img[data-large-url]');
