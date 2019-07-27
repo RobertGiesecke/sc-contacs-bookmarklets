@@ -56,10 +56,13 @@
             </a>
         </li>
     </ul>
+    <br>
+    <div class="github-card" data-user="RobertGiesecke" data-repo="sc-contacts-bookmarklets"></div>
+    <script src="//cdn.jsdelivr.net/gh/lepture/github-cards@latest/jsdelivr/widget.js"></script>
     <script>
         window.addEventListener('load', () => {
             const bookmarkletLinks = document.querySelectorAll('a[href^="javascript:"]');
-            for(link of bookmarkletLinks) {
+            for (link of bookmarkletLinks) {
                 link.name = link.textContent;
             }
             const gifImages = document.querySelectorAll('img[data-large-url]');
