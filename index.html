@@ -68,6 +68,7 @@
             const bookmarkletLinks = document.querySelectorAll('a[href^="javascript:"]');
             for (link of bookmarkletLinks) {
                 link.name = link.textContent;
+                link.title = 'Drag this link into bookmarks toolbar';
             }
             const gifImages = document.querySelectorAll('img[data-large-url]');
 
