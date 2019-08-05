@@ -4,7 +4,6 @@
 		const nickNamesAsJSon = orgDiv ? JSON.stringify(Array.from(orgDiv.querySelectorAll('.nick')).map(t => t.textContent)) : null;
 
 		const searchBox = document.querySelector('input[name=search]');
-		searchBox.value = nickNamesAsJSon;
 
 		const getSelection = window.documentOrShadowRootInstance && documentOrShadowRootInstance.getSelection
 			? documentOrShadowRootInstance.getSelection
@@ -19,6 +18,9 @@
 			: null;
 
 		try {
+			/* put nicks into search box to copy it */
+			searchBox.value = nickNamesAsJSon;
+
 			searchBox.focus();
 			searchBox.select();
 			searchBox.scrollIntoView();
