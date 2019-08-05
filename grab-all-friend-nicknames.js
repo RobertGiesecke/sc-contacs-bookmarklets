@@ -76,10 +76,7 @@
 		console.log("found " + nickNames.length + " nick names");
 
 		const nickNamesAsJSon = JSON.stringify(nickNames);
-		/* put nicks into search box to copy it */
 		await sleep(1500);
-
-		searchBox.value = nickNamesAsJSon;
 
 		const getSelection = window.documentOrShadowRootInstance && documentOrShadowRootInstance.getSelection
 			? documentOrShadowRootInstance.getSelection
@@ -94,6 +91,9 @@
 			: null;
 
 		try {
+			/* put nicks into search box to copy it */
+			searchBox.value = nickNamesAsJSon;
+
 			searchBox.focus();
 			searchBox.select();
 			searchBox.scrollIntoView();
