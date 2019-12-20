@@ -57,9 +57,7 @@
 		const ownProfileHandleLink = document.querySelector('.c-account-sidebar__profile-info-handle');
 		const ownProfileHandle = ownProfileHandleLink ? ownProfileHandleLink.textContent : null;
 		const clearSearchBox = () => {
-			if (contactsDiv.classList.contains('is-searching')) {
-				searchSubmit.click();
-			}
+			searchBox.value = '';
 		};
 		const contactsDiv = document.querySelector('#sidebar-contacts-list');
 		const userNicks = JSON.parse(searchBox.value);
@@ -68,11 +66,10 @@
 
 		for (user of userNicks) {
 			if (user == ownProfileHandle) {
-				console.log('skip self: ' + user);
+				console.info('skip self: ' + user);
 				continue;
 			}
 			if (alreadyFollowingNickNames.indexOf(user) > -1) {
-				console.log('already following ' + user);
 				continue;
 			}
 			await followNickName(user)
